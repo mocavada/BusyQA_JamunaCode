@@ -1,0 +1,49 @@
+<h4>Welcome to BusyQa My Portal</h4>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    div {
+      margin-bottom: 15px;
+      padding: 4px 12px;
+    }
+
+    .danger {
+      background-color: #ffdddd;
+      border-left: 6px solid #f44336;
+    }
+
+    .success {
+      background-color: #ddffdd;
+      border-left: 6px solid #4CAF50;
+    }
+
+    .info {
+      background-color: #e7f3fe;
+      border-left: 6px solid #2196F3;
+    }
+
+
+    .warning {
+      background-color: #ffffcc;
+      border-left: 6px solid #ffeb3b;
+    }
+  </style>
+</head>
+
+<div class="success" *ngFor="let user of users">
+    <p><strong>Thanks for for Chosing you Course {{user.clientCourse}} {{user.name}} !!!</strong>  </p>
+ </div>
+
+ <div class="info" *ngFor="let user of users">
+    <p><strong>Your Contact Details : Email :{{user.email}}</strong>  </p>
+ </div>
+
+ <div class="warning" *ngFor="let user of users">
+    <p><strong>Payment Plan :{{user.paymentPlan}}</strong>  </p>
+    <p><strong>Payment Status:{{user.paymentStatus}}</strong>  </p>
+    <p><strong>Last Payment Date :{{user.lastPaidDate}}</strong>  </p>
+    <p><strong>Amount Paid :{{user.amountPaid}} CAD</strong>  </p>
+    <p><strong>Next Payment Date: {{user.nextPaymentDate}}</strong>  </p>
+    <p><strong>Total Course Fee :{{user.totalAmount}} CAD</strong>  </p>
+ </div>
+{{errorMessage}}

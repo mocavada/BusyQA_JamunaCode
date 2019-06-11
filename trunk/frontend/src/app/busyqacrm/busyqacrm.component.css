@@ -1,0 +1,69 @@
+main {
+    font-family: gibbs, sans-serif;
+}
+
+h3 {
+    font-weight: 200;
+}
+
+
+/*  */
+.bg-primary, .btn-primary {
+    background-color: #377bb5;
+    border: inherit;
+  }
+
+.add-appointment .card-body {
+    display: none;
+  }
+  
+
+  .appointment-list {
+    font-size: 1.1em;
+  }
+  
+  .appointment-list .pet-item {
+    border-bottom: 1px dotted gray;
+  }
+  
+  .appointment-list .pet-item:last-child {
+    border-bottom: none;
+  }
+  
+  .appointment-list .pet-name {
+    font-weight: 600;
+    color: #337ab7;
+    font-size: 1em;
+    line-height: 100%;
+  }
+  
+  .appointment-list .label-item {
+    font-weight: 600;
+    color: #667b82;
+    font-size: 1em;
+  }
+  
+  .appointment-list .apt-date {
+    font-style: italic;
+    font-size: 0.8em;
+  }
+  
+  .appointment-list .apt-notes {
+    line-height: 100%;
+  }
+  
+  .dropdown-item.active,
+  .dropdown-item:active {
+    background-color: #a9aeb2;
+  }
+
+  .apt-addheading {
+    cursor: pointer;
+    user-select: none;
+    height: 50px;
+    color: #fff;
+    text-align: left;
+    content: "Reference ";
+  }
+
+  

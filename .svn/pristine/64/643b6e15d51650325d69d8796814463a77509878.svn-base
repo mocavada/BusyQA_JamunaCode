@@ -1,0 +1,92 @@
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=5">
+  <style>
+    div {
+      margin-bottom: 15px;
+      padding: 4px 12px;
+    }
+
+    .danger {
+      background-color: #ffdddd;
+      border-left: 6px solid #f44336;
+    }
+
+    .success {
+      background-color: #ddffdd;
+      border-left: 6px solid #4CAF50;
+    }
+
+    .info {
+      background-color: #e7f3fe;
+      border-left: 6px solid #2196F3;
+    }
+
+
+    .warning {
+      background-color: #ffffcc;
+      border-left: 6px solid #ffeb3b;
+    }
+  </style>
+</head>
+<div *ngIf="isSignedUp; else signupForm">
+    <div class="success">
+        <p><strong>Success !</strong> Your client lead is successfully added . Please Click on Client Panel to view Updated Client list!</p>
+      </div>
+ </div>
+
+<ng-template #signupForm>
+  <div class="row col-sm-6" style="max-width:350px;">
+    <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+      <div class="form-group">
+        <label for="name">Your name</label>
+        <input type="text" class="form-control" name="name" [(ngModel)]="form.name" #name="ngModel" required />
+        <div *ngIf="f.submitted && name.invalid">
+          <div *ngIf="name.errors.required">Name is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" name="username" [(ngModel)]="form.username" #username="ngModel"
+               required />
+        <div *ngIf="f.submitted && username.invalid">
+          <div *ngIf="username.errors.required">Username is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" class="form-control" name="email" [(ngModel)]="form.email" #email="ngModel" required email />
+        <div *ngIf="f.submitted && email.invalid">
+          <div *ngIf="email.errors.required">Email is required</div>
+          <div *ngIf="email.errors.email">Email must be a valid email address</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" name="password" [(ngModel)]="form.password" #password="ngModel"
+               required minlength="8" />
+        <div *ngIf="f.submitted && password.invalid">
+          <div *ngIf="password.errors.required">Password is required</div>
+          <div *ngIf="password.errors.minlength">Password must be at least 8 characters</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="clientCourse">Course Interested</label>
+        <select class="form-control" name="clientCourse" [(ngModel)]="form.clientCourse" #clientCourse="ngModel" required clientCourse>
+          <option value="AUTOMATION_TESTING" selected>Automated Testing</option>
+          <option value="AUTOMATION_TESTING_ONLINE">Automated Testing(Online)</option>
+          <option value="BUSINESS_ANALYSIS">Business Analysis</option>
+          <option value="SCRUM_MASTER">Scrum Master</option>
+          <option value="FULL_STACK_JAVA_DEV">Full Stack Java Developer</option>
+          <option value="PERFORMANCE_TESTING">Performance Testing</option>
+          <option value="NOT_DECIDED">Not Decided Yet..I am looking still</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary">Register</button>
+        <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
+          Signup failed!<br/>{{errorMessage}}
+        </div>
+      </div>
+    </form>
+  </div>
+</ng-template>

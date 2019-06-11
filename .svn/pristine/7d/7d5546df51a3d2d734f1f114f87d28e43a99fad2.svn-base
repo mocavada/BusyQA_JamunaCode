@@ -1,0 +1,99 @@
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=5">
+  <style>
+    div {
+      margin-bottom: 15px;
+      padding: 4px 12px;
+    }
+
+    .danger {
+      background-color: #ffdddd;
+      border-left: 6px solid #f44336;
+    }
+
+    .success {
+      background-color: #ddffdd;
+      border-left: 6px solid #4CAF50;
+    }
+
+    .info {
+      background-color: #e7f3fe;
+      border-left: 6px solid #2196F3;
+    }
+
+
+    .warning {
+      background-color: #ffffcc;
+      border-left: 6px solid #ffeb3b;
+    }
+  </style>
+</head>
+
+<div class="col-md-6 user-container" style="max-width:1000px;">
+    <h2 class="text-center">Edit User</h2>
+    <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+      <div class="hidden">
+        <input type="text" formControlName="id" placeholder="id" name="id" class="form-control" id="id">
+      </div>
+      <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" formControlName="name" placeholder="name" name="name" class="form-control" id="name" readonly="true">
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" formControlName="password" placeholder="" name="password" class="form-control" id="password">
+        </div>
+
+      <div class="form-group">
+        <label for="username">User Name:</label>
+        <input type="text" formControlName="username" placeholder="username" name="username" class="form-control" id="username" >
+      </div>
+
+      <div class="form-group">
+          <label for="email">E-Mail:</label>
+          <input type="text" formControlName="email" placeholder="email" name="email" class="form-control" id="email" >
+        </div>
+
+      <div class="form-group">
+        <label for="status">Status:</label>
+        <select formControlName="status" placeholder="status" name="status" class="form-control" id="status" >
+          <option value="YES">YES</option>
+          <option value="NO">NO</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="statusAsOfDay">Status As Of Day:</label>
+        <input type="text" formControlName="statusAsOfDay" placeholder="statusAsOfDay" name="statusAsOfDay" class="form-control" id="statusAsOfDay" readonly="true">
+      </div>
+      <div class="warning">
+        <p><strong>Role and Team Selection :  </strong>  "Please select role and team in pair for eg: ROLE_PM and TEAM_ACCOUNTS" </p>
+      </div>
+      <div class="form-group">
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th>Roles(Select Orderly)</th>
+            <th>Teams(Select Orderly)</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+            <ng-multiselect-dropdown formControlName="roles"  name="roles" class="form-control" id="roles" [data]="dropdownList" [(ngModel)]="selectedItems"  [settings]="dropdownSettings"  (onSelect)="onItemSelect($event)">
+          </ng-multiselect-dropdown>
+            </td>
+            <td>
+              <ng-multiselect-dropdown formControlName="teams"  name="teams" class="form-control" id="teams" [data]="teamDropdownList" [(ngModel)]="teamSelectedItems"  [settings]="teamDropdownSettings"  (onSelect)="onItemSelect($event)">
+              </ng-multiselect-dropdown>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+     <button class="btn btn-success">Update</button>
+
+    </form>
+  </div>

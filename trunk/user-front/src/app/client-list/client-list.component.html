@@ -1,0 +1,71 @@
+<h4>Welcome to Client Panel</h4>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    div {
+      margin-bottom: 15px;
+      padding: 4px 12px;
+    }
+
+    .danger {
+      background-color: #ffdddd;
+      border-left: 6px solid #f44336;
+    }
+
+    .success {
+      background-color: #ddffdd;
+      border-left: 6px solid #4CAF50;
+    }
+
+    .info {
+      background-color: #e7f3fe;
+      border-left: 6px solid #2196F3;
+    }
+
+
+    .warning {
+      background-color: #ffffcc;
+      border-left: 6px solid #ffeb3b;
+    }
+  </style>
+</head>
+<div class="success">
+  <p><strong>Info ! Client Status can be changed only if the required condition for the status is met</strong>  </p>
+</div>
+<div class="warning">
+  <p><strong> Deleteing a client would delete the user permissions</strong>  </p>
+</div>
+<div class="danger">
+  <p><strong>Approving A Student?! Amount Paid Will be set to minimum amount paid for a student if in the event if zero payment</strong>  </p>
+</div>
+<button class="btn btn-danger" style="width:300px" (click)="addClientUser()"> Add New Client</button>
+<table class="table table-striped">
+    <thead>
+    <tr>
+      <th class="hidden">Id</th>
+      <th>Name</th>
+      <th>Username</th>
+      <th>E-mail</th>
+      <th>Course</th>
+      <th>Client Status</th>
+      <th>Client Preferred Location</th>
+      <th>Client Registration Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users">
+      <td class="hidden">{{user.id}}</td>
+      <td>{{user.name}}</td>
+      <td>{{user.username}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.clientCourse}}</td>
+      <td>{{user.clientStatus}}</td>
+      <td>{{user.trainingLocation}}</td>
+      <td>{{user.isRegisteredStudent}}</td>
+      <td><button class="btn btn-danger" (click)="deleteClient(user)"> Delete</button>
+        <button class="btn btn-warning" (click)="approveUser(user)" style="margin-left: 20px;"> Approve As Student</button>
+        <button class="btn btn-success" (click)="editUser(user)" style="margin-right: 120px;"> Edit Payment Setup</button></td>
+    </tr>
+    </tbody>
+  </table>
+{{errorMessage}}

@@ -1,0 +1,141 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=5">
+    <style>
+      div {
+        margin-bottom: 15px;
+        padding: 4px 12px;
+      }
+  
+      .danger {
+        background-color: #ffdddd;
+        border-left: 6px solid #f44336;
+      }
+  
+      .success {
+        background-color: #ddffdd;
+        border-left: 6px solid #4CAF50;
+      }
+  
+      .info {
+        background-color: #e7f3fe;
+        border-left: 6px solid #2196F3;
+      }
+  
+  
+      .warning {
+        background-color: #ffffcc;
+        border-left: 6px solid #ffeb3b;
+      }
+    </style>
+  </head>
+  
+  <div class="col-md-6 user-container" style="max-width:1000px;">
+      <h2 class="text-center">Edit Client</h2>
+      <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+        <div class="hidden">
+          <input type="text" formControlName="id" placeholder="id" name="id" class="form-control" id="id">
+        </div>
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" formControlName="name" placeholder="name" name="name" class="form-control" id="name" readonly="true">
+          </div>
+          <div class="form-group">
+              <label for="clientCourse">Course Interested:  </label>
+              <select class="form-control" formControlName="clientCourse" placeholder="clientCourse" name="clientCourse" class="clientCourse" id="clientCourse" readonly="false">
+                <option value="AUTOMATION_TESTING" selected>Automated Testing</option>
+                <option value="AUTOMATION_TESTING_ONLINE">Automated Testing(Online)</option>
+                <option value="BUSINESS_ANALYSIS">Business Analysis</option>
+                <option value="SCRUM_MASTER">Scrum Master</option>
+                <option value="FULL_STACK_JAVA_DEV">Full Stack Java Developer</option>
+                <option value="PERFORMANCE_TESTING">Performance Testing</option>
+                <option value="NOT_DECIDED">Not Decided Yet..I am looking still</option>
+              </select>
+            </div>
+            <div class="form-group">
+                <label for="clientStatus">Client Status:   </label>
+                <select class="form-control" formControlName="clientStatus" placeholder="clientStatus" name="clientStatus" class="clientStatus" id="clientStatus" readonly="false">
+                  <option value="LEADS" selected>LEADS</option>
+                  <option value="INTERN">INTERN</option>
+                  <option value="ALUMINI">ALUMINI</option>
+                  <option value="STUDENT">STUDENT</option>
+                </select>
+              </div>
+              <div class="form-group">
+                  <label for="paymentPlan">Payment Plan:   </label>
+                  <select class="form-control" formControlName="paymentPlan" placeholder="paymentPlan" name="paymentPlan" class="paymentPlan" id="paymentPlan" readonly="false">
+                    <option value="FULL_AMOUNT__FULL_PAY" selected>FULL PAY</option>
+                    <option value="INSENTIVE__FULL_PAY">INSENTIVE FULL PAY</option>
+                    <option value="FULL_AMOUNT__PLAN__CREDIT_AUTO">FULL AMOUNT PLAN CREDIT_AUTO</option>
+                    <option value="INSENTIVE__PLAN__CREDIT_AUTO">INSENTIVE PLAN CREDIT UTO</option>
+                    <option value="FULL_AMOUNT__PLAN__MANUAL">FULL AMOUNT PLAN MANUAL</option>
+                    <option value="INSENTIVE__PLAN__MANUAL">INSENTIVE PLAN MANUAL</option>
+                    <option value="UNSCHEDULED">UNSCHEDULED</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="paymentStatus">Payment Status:   </label>
+                    <select class="form-control" formControlName="paymentStatus" placeholder="paymentStatus" name="paymentStatus" class="paymentStatus" id="paymentStatus" readonly="false">
+                      <option value="ON_SCHEDULE" selected>ON SCHEDULE</option>
+                      <option value="DUE_FOR_A_WEEK">DUE FOR A WEEK</option>
+                      <option value="SERIOUS_OVER_DUE">SERIOUS OVER DUE</option>
+                      <option value="UNSCHEDULED">UNSCHEDULED</option>
+                    </select>
+                  </div>
+  
+          <div class="form-group">
+            <label for="amountPaid">Amount Paid[CAD]:</label>
+            <input type="amountPaid" formControlName="amountPaid" placeholder="" name="amountPaid" class="form-control" id="amountPaid">
+          </div>
+
+          
+          <div class="form-group">
+              <label for="totalAmount">Total Course Fee[CAD]:</label>
+              <input type="totalAmount" formControlName="totalAmount" placeholder="" name="totalAmount" class="form-control" id="totalAmount" >
+            </div>
+
+            <div class="form-group">
+                <label for="lastPaidDate">Last Payment Date:</label>
+                <input type="date" formControlName="lastPaidDate" placeholder="" name="lastPaidDate" class="form-control" id="lastPaidDate">
+              </div>
+
+              <div class="form-group">
+                  <label for="nextPaymentDate">Next Payment Date:</label>
+                  <input type="date" formControlName="nextPaymentDate" placeholder="" name="nextPaymentDate" class="form-control" id="nextPaymentDate" >
+                </div>
+                <div class="form-group">
+                  <button class="btn btn-success">Update</button>
+                </div>
+
+
+          <div class="form-group">
+              <label for="password">Password:</label>
+              <input type="password" formControlName="password" placeholder="" name="password" class="form-control" id="password" readonly="true">
+            </div>
+
+        <div class="form-group">
+          <label for="username">User Name:</label>
+          <input type="text" formControlName="username" placeholder="username" name="username" class="form-control" id="username" readonly="true" >
+        </div>
+  
+        <div class="form-group">
+            <label for="email">E-Mail:</label>
+            <input type="text" formControlName="email" placeholder="email" name="email" class="form-control" id="email" readonly="true">
+          </div>
+  
+        <div class="form-group">
+          <label for="status">Status:</label>
+          <select formControlName="status" placeholder="status" name="status" class="form-control" id="status" readonly="true">
+            <option value="YES">YES</option>
+            <option value="NO">NO</option>
+          </select>
+        </div>
+  
+        <div class="form-group">
+          <label for="statusAsOfDay">Status As Of Day:</label>
+          <input type="text" formControlName="statusAsOfDay" placeholder="statusAsOfDay" name="statusAsOfDay" class="form-control" id="statusAsOfDay" readonly="true">
+        </div>
+       
+      </form>
+    </div>
+  

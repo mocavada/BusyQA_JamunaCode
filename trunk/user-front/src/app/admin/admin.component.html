@@ -1,0 +1,69 @@
+<h4>Welcome to Admin Panel</h4>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    div {
+      margin-bottom: 15px;
+      padding: 4px 12px;
+    }
+
+    .danger {
+      background-color: #ffdddd;
+      border-left: 6px solid #f44336;
+    }
+
+    .success {
+      background-color: #ddffdd;
+      border-left: 6px solid #4CAF50;
+    }
+
+    .info {
+      background-color: #e7f3fe;
+      border-left: 6px solid #2196F3;
+    }
+
+
+    .warning {
+      background-color: #ffffcc;
+      border-left: 6px solid #ffeb3b;
+    }
+  </style>
+</head>
+<div class="success">
+  <p><strong>Info !</strong>  Below are the personas of user associated with team and role </p>
+</div>
+<div class="warning">
+  <p><strong>Editing A User?? </strong>  "Editing a user would reset the role and team mapping, You might have to reestablish the relationship" </p>
+  <p><strong>Deleiting A Client User?? </strong>  "Please Naviaget to Client Panel" </p>
+
+</div>
+<button class="btn btn-danger" style="width:300px" (click)="addUser()"> Add Internal User</button>
+<table class="table table-striped">
+    <thead>
+    <tr>
+      <th class="hidden">Id</th>
+      <th>Name</th>
+      <th>Username</th>
+      <th>E-mail</th>
+      <th>Roles</th>
+      <th>Teams</th>
+      <th>Active?</th>
+      <th>Status As Of Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users">
+      <td class="hidden">{{user.id}}</td>
+      <td>{{user.name}}</td>
+      <td>{{user.username}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.roles}}</td>
+      <td>{{user.teams}}</td>
+      <td>{{user.status}}</td>
+      <td>{{user.statusAsOfDay | date:"MM/dd/yyy:HH:mm"}}</td>
+      <td><button class="btn btn-danger" (click)="deleteUser(user)"> Delete</button>
+        <button class="btn btn-success" (click)="editUser(user)" style="margin-left: 20px;"> Edit</button></td>
+    </tr>
+    </tbody>
+  </table>
+{{errorMessage}}

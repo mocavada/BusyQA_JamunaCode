@@ -1,0 +1,117 @@
+
+<div class="card textcenter mr-4 mt-3 mb-3" [ngClass]="{'add-appointment': showForm}">
+
+  <div class="apt-addheading card-header bg-primary"
+  (click)="toggleAptDisplay()">
+     <fa-icon icon="plus"></fa-icon> Add Users
+</div><!-- card-header -->
+
+  <div class="card-body">
+
+
+      <form [formGroup]="editForm" (ngSubmit)="onAdd()" novalidate>
+          <div *ngIf="validMessage != ''">
+            <h3 class="has-info">{{ validMessage }}</h3>
+          </div>
+        
+           <div class="form-group">
+            <label>Name:</label>
+            <input type="text" value="" class="form-control" id="name" formControlName="name" />
+          </div>
+        
+           <div class="form-group">
+            <label>Username:</label>
+            <input type="text" value="" class="form-control" id="username" formControlName="username" />
+          </div>
+        
+          <div class="form-group">
+            <label>Email:</label>
+            <input type="text" value="" class="form-control" id="email" formControlName="email" />
+          </div>
+        
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="text" value="" class="form-control" formControlName="password" />
+            <small *ngIf="editForm.get('password').hasError('required')">Required!</small>
+            <small *ngIf="editForm.get('password').hasError('minlength')">Minimum 8 chars</small>
+         </div>
+        
+         <div class="checkbox-group" style="margin-top:40px">
+          <div class="checkbox-wrap" id="postionsContainer">
+            <h4>Select positions for the user:</h4>
+              <div class="form-group" *ngFor="let position of positionArray;let i=index">
+                <input [checked]="position == formData.controls[i]?.value"  type="checkbox" (change)="onChange($event.target.checked, position)"/>
+                <label [for]="i"> {{ position }} </label>
+              </div>
+          </div>
+        </div>
+        
+        
+          <button class="btn btn-primary mr-3"
+                    style="width:80px;"
+                    type="submit"
+                    [disabled]="!editForm.valid"> Add
+          </button>
+       
+      </form>
+
+      <!-- <form id="aptForm" novalidate
+      (ngSubmit)="handleAdd(aptForm.value)"
+      #aptForm="ngForm">
+      
+        <div class="form-group form-row">
+          <label class="col-md-2 col-form-label text-md-right" for="petName">Pet Name</label>
+          <div class="col-md-10">
+            <input type="text" class="form-control" name="petName" id="petName" placeholder="Pet's Name"
+            ngModel>
+          </div>
+        </div>
+  
+        <div class="form-group form-row">
+          <label class="col-md-2 col-form-label text-md-right"
+            for="ownerName">Pet Owner</label>
+          <div class="col-md-10">
+            <input type="text" class="form-control" name="ownerName"
+              id="ownerName" placeholder="Owner's Name" 
+              ngModel>
+          </div>
+        </div>
+  
+        <div class="form-group form-row">
+          <label class="col-md-2 col-form-label text-md-right" for="aptDate">Date</label>
+          <div class="col-md-4">
+            <input type="date" class="form-control" id="aptDate" name="aptDate"
+            ngModel>
+          </div>
+          <label class="col-md-2 col-form-label text-md-right" for="aptTime">Time</label>
+          <div class="col-md-4">
+            <input type="time" class="form-control" name="aptTime" id="aptTime" 
+            ngModel>
+          </div>
+        </div>
+  
+        <div class="form-group form-row">
+          <label class="col-md-2 text-md-right" for="aptNotes">Apt. Notes</label>
+          <div class="col-md-10">
+            <textarea class="form-control" rows="4" cols="50"
+              name="aptNotes" id="aptNotes" placeholder="Appointment Notes" ngModel></textarea>
+          </div>
+        </div>
+  
+        <div class="form-group form-row mb-0">
+          <div class="offset-md-2 col-md-10">
+            <button type="submit" class="btn btn-primary d-block ml-auto"
+            >Add Appointment</button>
+          </div>
+        </div>
+  
+      </form> -->
+
+   
+
+
+
+
+  </div><!-- card-body -->
+</div><!-- card-primary -->
+      
